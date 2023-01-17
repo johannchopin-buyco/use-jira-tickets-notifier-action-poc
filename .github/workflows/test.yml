@@ -1,9 +1,7 @@
 on:
  push:
     tags:        
-      - '*'   
-    branches:
-      - main
+      - v**.**.**
 
 jobs:
   hello_world_action:
