@@ -1,0 +1,21 @@
+on:
+ push:
+    tags:        
+      - '*'   
+    branches:
+      - main
+
+jobs:
+  hello_world_action:
+    runs-on: ubuntu-latest
+    name: A job to test an action
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get the message
+        id: messager
+        uses: johannchopin-buyco/deployed-jira-tickets-notifier-action@v0.0.4
+      - name: Log the action output message
+        run: echo "${{ steps.messager.outputs.message }}"
